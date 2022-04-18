@@ -71,7 +71,7 @@ inline ComponentType& ComponentList<ComponentType>::AddComponent(Entity anEntity
 	myEntitiesContainingComponent.Set(anEntity);
 	myActiveEntities.Set(anEntity);
 
-	uint32_t componentIndex = myComponentsSize++;
+	const uint32_t componentIndex = myComponentsSize++;
 	myComponents[componentIndex] = ComponentType();
 	myMapEntityToComponent[anEntity] = componentIndex;
 	myMapComponentToEntity[componentIndex] = anEntity;
@@ -88,7 +88,7 @@ inline void ComponentList<ComponentType>::RemoveComponent(Entity anEntity)
 	myActiveEntities.Reset(anEntity);
 
 	--myComponentsSize;
-	uint32_t componentIndex = myMapEntityToComponent[anEntity];
+	const uint32_t componentIndex = myMapEntityToComponent[anEntity];
 	myComponents[componentIndex] = myComponents[myComponentsSize];
 	myMapEntityToComponent[myMapComponentToEntity[myComponentsSize]] = componentIndex;
 	myMapComponentToEntity[componentIndex] = myMapComponentToEntity[myComponentsSize];

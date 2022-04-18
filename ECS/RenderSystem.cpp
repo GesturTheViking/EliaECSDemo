@@ -9,14 +9,14 @@ void Systems::Render(
     ComponentList<TransformComponent>* someTransformComps,
     ComponentList<ModelComponent>* someModelComps)
 {
-    ModelComponent* mdlList = someModelComps->GetDenseComponents();
+    ModelComponent* modelList = someModelComps->GetDenseComponents();
 
     const uint32_t count = someModelComps->GetSize();
     for (uint32_t compIndex = 0U; compIndex < count; ++compIndex)
     {
         const TransformComponent& trs = someTransformComps->GetComponent(someModelComps->GetEntityFromComponent(compIndex));
-        const ModelComponent& mdl = mdlList[compIndex];
+        const ModelComponent& model = modelList[compIndex];
 
-        DrawModel(*ModelManager::GetModel(mdl.myModel), trs.myPosition, mdl.myScale, mdl.myColor);
+        DrawModel(*ModelManager::GetModel(model.myModel), trs.myPosition, model.myScale, model.myColor);
     }
 }
